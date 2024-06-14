@@ -26,3 +26,4 @@ const Page = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default Page;
+export const runtime = "edge";
