@@ -1,9 +1,11 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
   "plugins": [
-    "react-compiler"
+    "react-compiler",
+    "unused-imports"
   ],
   "rules": {
-    "react-compiler/react-compiler": "error"
+    "react-compiler/react-compiler": "error",
+    "unused-imports/no-unused-imports-ts": "warn"
   }
 }
