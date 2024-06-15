@@ -15,10 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white dark:bg-slate-800 text-slate-900 dark:text-white">
-        <nav>
-          <Links />
-        </nav>
+        <Links />
+
         {children}
+
         <footer>
           <p>&copy; 2024 Tom Baker</p>
         </footer>

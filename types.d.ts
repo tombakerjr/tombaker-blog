@@ -7,5 +7,5 @@ type Post = {
 type Fact = {
   _id: string;
   text: string;
-  user: string
-}
+  user: string;
+};
