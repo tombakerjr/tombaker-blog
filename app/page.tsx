@@ -1,21 +1,14 @@
-import styles from './page.module.css'
-
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to the mind of Tom Baker
-        </h1>
+    <div>
+      <h1 className="mb-4 border-b border-gray-100 dark:border-gray-600 pb-6">Tom Baker&rsquo;s Website</h1>
+      <h2>Work In Progress!</h2>
 
-        <p className={styles.description}>
-          <a href="https://github.com/tombakerjr">Github Profile</a>
-        </p>
-      </main>
-
-      <footer className={styles.footer}>
-        <p>&copy; 2024 Tom Baker</p>
-      </footer>
+      <p>
+        <a href="https://github.com/tombakerjr" target="_blank">
+          Github Profile
+        </a>
+      </p>
     </div>
-  )
+  );
 }
