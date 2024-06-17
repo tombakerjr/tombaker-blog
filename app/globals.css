@@ -2,3 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  h2 {
+    @apply text-2xl font-bold;
+  }
+
+  a {
+    @apply underline;
+  }
+}
+
+.max-w-container {
+  max-width: 85rem;
+}
