@@ -3,8 +3,8 @@ import Link from "next/link";
 const getPosts = async (): Promise<Array<Post>> => {
   const postRequest = await fetch(`https://cat-fact.herokuapp.com/facts/`);
   if (!postRequest.ok) return [{ id: "-1", title: "Error", content: "Failed to fetch post" }];
-  const facts = await postRequest.json();
-  const posts: Array<Post> = facts.map((fact: Fact) => ({
+  const facts: Array<Fact> = await postRequest.json();
+  const posts: Array<Post> = facts.map((fact) => ({
     id: fact._id,
     title: fact.user,
     content: fact.text,

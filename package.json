@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev .vercel/output/static",
+    "build-cf-types": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
     "@types/node": "^20.14.2",
@@ -21,6 +24,8 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.11.3",
+    "@cloudflare/workers-types": "^4.20240614.0",
     "autoprefixer": "^10.4.19",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
