@@ -1,3 +1,8 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "tombaker-blog"
+compatibility_date = "2024-04-05"
+compatibility_flags = ["nodejs_compat"]
+
 # Enter your account id
 # This can be found at https://dash.cloudflare.com/ --> Workers & Pages
 #  --> Overview, then in the right sidebar
