@@ -9,8 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "npm run pages:build && wrangler pages dev .vercel/output/static",
-    "preview:remote": "npm run pages:build && wrangler pages dev --remote .vercel/output/static",
+    "preview": "pnpm run pages:build && wrangler pages dev .vercel/output/static",
+    "preview:remote": "pnpm run pages:build && wrangler pages dev --remote .vercel/output/static",
     "build-cf-types": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
