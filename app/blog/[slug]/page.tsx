@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { getRequestContext } from "@cloudflare/next-on-pages";
 
 const getPost = async (slug: string): Promise<Post> => {
   const postRequest = await fetch(`https://cat-fact.herokuapp.com/facts/`);
@@ -15,9 +14,6 @@ const getPost = async (slug: string): Promise<Post> => {
 };
 
 const Page = async ({ params }: { params: { slug: string } }) => {
-  const myKv = getRequestContext().env.KVDATA;
-  const kvValue = (await myKv.get("foobar")) || false;
-  console.log(kvValue);
   const post = await getPost(params.slug);
 
   return (
