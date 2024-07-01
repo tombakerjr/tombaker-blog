@@ -8,13 +8,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "pages:build": "pnpm dlx @cloudflare/next-on-pages"
+    "pages:build": "pnpm dlx @cloudflare/next-on-pages",
+    "preview": "pnpm run pages:build && wrangler pages dev .vercel/output/static",
+    "preview:remote": "pnpm run pages:build && wrangler pages dev --remote .vercel/output/static",
+    "build-cf-types": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "babel-plugin-react-compiler": "0.0.0-experimental-696af53-20240625",
+    "drizzle-orm": "^0.31.2",
     "eslint": "~8.57.0",
     "next": "15.0.0-rc.0",
     "react": "19.0.0-rc-58af67a8f8-20240628",
@@ -26,6 +30,7 @@
     "@cloudflare/workers-types": "^4.20240620.0",
     "@typescript-eslint/typescript-estree": "^7.14.1",
     "autoprefixer": "^10.4.19",
+    "drizzle-kit": "^0.22.8",
     "eslint-config-next": "15.0.0-rc.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-next-on-pages": "^1.12.0",
