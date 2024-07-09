@@ -14,7 +14,7 @@ type Post = {
   image: null;
   images: null;
   tags: null;
-  total: 1;
+  total: number;
 };
 
 type SonicResponse<T = any> = {
