@@ -17,12 +17,12 @@ const getLocalPosts = async (): Promise<Array<any>> => {
 
 const getPosts = async (): Promise<Array<Post>> => {
   const startTime = Date.now();
-  const endTime = Date.now();
   const postRequest = await fetch("https://api.tombaker.me/v1/posts");
   if (!postRequest.ok) return [];
 
   const { data: posts }: SonicResponse<Array<Post>> = await postRequest.json();
 
+  const endTime = Date.now();
   posts[0].title += " (fetched from SonicJS in " + (endTime - startTime) + "ms)";
   return posts;
 };
