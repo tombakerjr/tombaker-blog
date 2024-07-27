@@ -4,20 +4,26 @@ import { getRequestContext } from "@cloudflare/next-on-pages";
 import { table as postsTable } from "@/server/posts";
 
 const getLocalPosts = async (): Promise<Array<any>> => {
+  const startTime = Date.now();
   const context = getRequestContext();
   const db = drizzle(context.env.D1DATA);
 
   const results = await db.select().from(postsTable).all();
 
+  const endTime = Date.now();
+  results[0].title += " (fetched in " + (endTime - startTime) + "ms)";
   return results;
 };
 
 const getPosts = async (): Promise<Array<Post>> => {
+  const startTime = Date.now();
+  const endTime = Date.now();
   const postRequest = await fetch("https://api.tombaker.me/v1/posts");
   if (!postRequest.ok) return [];
 
   const { data: posts }: SonicResponse<Array<Post>> = await postRequest.json();
 
+  posts[0].title += " (fetched in " + (endTime - startTime) + "ms)";
   return posts;
 };
 
@@ -35,7 +41,6 @@ const Page = async () => {
       <h1 className="mb-4 border-b border-gray-100 dark:border-gray-600 pb-6">
         Tom&apos;s Blog (eventually, but just cat facts for now!)
       </h1>
-      {/* TODO: Render paginated list of blog posts */}
       {posts.map((post: Post) => (
         <div key={post.id} className="mt-6">
           <Link href={`/blog/${post.id}`}>
