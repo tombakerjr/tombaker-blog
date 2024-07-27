@@ -11,7 +11,7 @@ const getLocalPosts = async (): Promise<Array<any>> => {
   const results = await db.select().from(postsTable).all();
 
   const endTime = Date.now();
-  results[0].title += " (fetched in " + (endTime - startTime) + "ms)";
+  results[0].title += " (fetched from D1 in " + (endTime - startTime) + "ms)";
   return results;
 };
 
@@ -23,7 +23,7 @@ const getPosts = async (): Promise<Array<Post>> => {
 
   const { data: posts }: SonicResponse<Array<Post>> = await postRequest.json();
 
-  posts[0].title += " (fetched in " + (endTime - startTime) + "ms)";
+  posts[0].title += " (fetched from SonicJS in " + (endTime - startTime) + "ms)";
   return posts;
 };
 
