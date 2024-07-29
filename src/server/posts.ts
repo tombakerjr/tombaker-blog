@@ -13,6 +13,7 @@ export const tableName = "posts";
 export const definition = {
   id: text("id").primaryKey(),
   title: text("title"),
+  summary: text("summary"),
   body: text("body"),
   userId: text("userId"),
   image: text("image"),

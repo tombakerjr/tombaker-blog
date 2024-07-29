@@ -10,7 +10,7 @@ const PAGE_SIZE = 3;
 
 type Post = InferSelectModel<typeof postsTable>;
 
-const getLocalPosts = async ({ currentPage }: { currentPage: number }): Promise<Array<Post & { total: number }>> => {
+const getPosts = async ({ currentPage }: { currentPage: number }): Promise<Array<Post & { total: number }>> => {
   const context = getRequestContext();
   const db = drizzle(context.env.D1DATA);
 
@@ -26,48 +26,23 @@ const getLocalPosts = async ({ currentPage }: { currentPage: number }): Promise<
   return results.map((result) => ({ ...result, total: total.count }));
 };
 
-const getPosts = async (): Promise<Array<Post>> => {
-  const startTime = Date.now();
-  const postRequest = await fetch("https://api.tombaker.me/v1/posts");
-  if (!postRequest.ok) return [];
-
-  const { data: posts, executionTime, source }: SonicResponse<Array<Post>> = await postRequest.json();
-
-  const endTime = Date.now();
-  posts[0].title +=
-    " (fetched from SonicJS in " + (endTime - startTime) + `ms via ${source}, execution time: ${executionTime}ms)`;
-  return posts;
-};
-
 const Page = async ({ searchParams }: { searchParams?: { page?: string } }) => {
-  // const posts = await getPosts();
-  // console.log("Posts: ", posts);
-
   const currentPage = Number(searchParams?.page) || 1;
-  console.log(searchParams, currentPage);
 
-  const localPosts = await getLocalPosts({ currentPage });
+  const posts = await getPosts({ currentPage });
 
-  const total = localPosts[0]?.total || 0;
+  const total = posts?.[0]?.total || 0;
   const totalPages = Math.ceil(total / PAGE_SIZE);
 
   return (
     <div>
       <h1 className="mb-4 border-b border-gray-100 dark:border-gray-600 pb-6">Tom&apos;s Blog</h1>
-      {/* {posts.map((post: Post) => (
+      {posts.map((post: Post) => (
         <div key={post.id} className="mt-6">
           <Link href={`/blog/${post.id}`}>
             <h2 className="text-xl font-bold">{post.title}</h2>
           </Link>
-          <div dangerouslySetInnerHTML={{ __html: post.body }} />
-        </div>
-      ))} */}
-      {localPosts.map((post: Post) => (
-        <div key={post.id} className="mt-6">
-          <Link href={`/blog/${post.id}`}>
-            <h2 className="text-xl font-bold">{post.title}</h2>
-          </Link>
-          <div dangerouslySetInnerHTML={{ __html: post.body ?? <div /> }} />
+          <p>{post.summary}</p>
         </div>
       ))}
       <div className="mt-6">

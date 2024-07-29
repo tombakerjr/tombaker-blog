@@ -1,18 +1,5 @@
 import Link from "next/link";
 
-// const getPost = async (slug: string): Promise<Post> => {
-//   const postRequest = await fetch(`https://cat-fact.herokuapp.com/facts/`);
-//   if (!postRequest.ok) return { id: "-1", title: "Error", content: "Failed to fetch post" };
-//   const facts: Array<Fact> = await postRequest.json();
-//   const fact = facts.find((fact) => {
-//     return fact._id === slug;
-//   });
-
-//   if (!fact) return { id: "-1", title: "Error", content: "Failed to fetch post" };
-//   const post = { id: fact._id, title: fact.user, content: fact.text };
-//   return post;
-// };
-
 const getPost = async (slug: string): Promise<Post | null> => {
   const postRequest = await fetch(`https://api.tombaker.me/v1/posts/${slug}`);
   if (!postRequest.ok) return null;
