@@ -55,4 +55,4 @@ const Page = async ({ searchParams }: { searchParams?: { page?: string } }) => {
 
 export default Page;
 export const runtime = "edge";
-export const dynamicParams = false
+export const dynamicParams = false;
