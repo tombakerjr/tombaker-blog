@@ -2,7 +2,7 @@ import Link from "next/link";
 import { drizzle } from "drizzle-orm/d1";
 import { getRequestContext } from "@cloudflare/next-on-pages";
 import { table as postsTable } from "@/server/posts";
-import { count } from "drizzle-orm";
+import { count, desc } from "drizzle-orm";
 import { type InferSelectModel } from "drizzle-orm";
 
 // FIXME: Set this to 10 after pagination testing
@@ -19,7 +19,7 @@ const getPosts = async ({ currentPage }: { currentPage: number }): Promise<Array
   const results = await db
     .select()
     .from(postsTable)
-    .orderBy(postsTable.createdOn)
+    .orderBy(desc(postsTable.createdOn))
     .limit(PAGE_SIZE)
     .offset(PAGE_SIZE * (currentPage - 1));
 
