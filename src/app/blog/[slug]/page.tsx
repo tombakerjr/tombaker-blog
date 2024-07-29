@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+// TODO: Switch to pulling data directly from D1
 const getPost = async (slug: string): Promise<Post | null> => {
   const postRequest = await fetch(`https://api.tombaker.me/v1/posts/${slug}`);
   if (!postRequest.ok) return null;

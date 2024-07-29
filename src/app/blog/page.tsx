@@ -5,8 +5,7 @@ import { table as postsTable } from "@/server/posts";
 import { count, desc } from "drizzle-orm";
 import { type InferSelectModel } from "drizzle-orm";
 
-// FIXME: Set this to 10 after pagination testing
-const PAGE_SIZE = 3;
+const PAGE_SIZE = 10;
 
 type Post = InferSelectModel<typeof postsTable>;
 
