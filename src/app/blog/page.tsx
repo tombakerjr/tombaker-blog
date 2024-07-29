@@ -20,10 +20,11 @@ const getPosts = async (): Promise<Array<Post>> => {
   const postRequest = await fetch("https://api.tombaker.me/v1/posts");
   if (!postRequest.ok) return [];
 
-  const { data: posts }: SonicResponse<Array<Post>> = await postRequest.json();
+  const { data: posts, executionTime, source }: SonicResponse<Array<Post>> = await postRequest.json();
 
   const endTime = Date.now();
-  posts[0].title += " (fetched from SonicJS in " + (endTime - startTime) + "ms)";
+  posts[0].title +=
+    " (fetched from SonicJS in " + (endTime - startTime) + `ms via ${source}, execution time: {${executionTime}}ms)`;
   return posts;
 };
 
