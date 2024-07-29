@@ -1,7 +1,7 @@
 import { sqliteTable, index, text } from "drizzle-orm/sqlite-core";
 
 import { relations } from "drizzle-orm";
-// import { auditSchema } from "./audit";
+import { auditSchema } from "./audit";
 import * as users from "./users";
 import * as categoriesToPosts from "./categoriesToPosts";
 // import * as comments from "./comments";
@@ -24,7 +24,7 @@ export const table = sqliteTable(
   tableName,
   {
     ...definition,
-    // ...auditSchema,
+    ...auditSchema,
   },
   (table) => {
     return {

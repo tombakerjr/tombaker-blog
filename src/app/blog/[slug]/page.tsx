@@ -36,7 +36,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   return (
     <div>
       <h1 className="mb-4 border-b border-gray-100 dark:border-gray-600 pb-6">{post.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.body }} />
+      <div dangerouslySetInnerHTML={{ __html: post.body ?? <div /> }} />
       <br />
       <Link href={"/blog"}>Return to Blog page</Link>
     </div>
