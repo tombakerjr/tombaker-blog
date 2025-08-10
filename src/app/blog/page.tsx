@@ -25,8 +25,8 @@ const getPosts = async ({ currentPage }: { currentPage: number }): Promise<Array
   return results.map((result) => ({ ...result, total: total.count }));
 };
 
-const Page = async ({ searchParams }: { searchParams?: { page?: string } }) => {
-  const currentPage = Number(searchParams?.page) || 1;
+const Page = async ({ searchParams }: { searchParams?: Promise<{ page?: string }> }) => {
+  const currentPage = Number((await searchParams)?.page) || 1;
 
   const posts = await getPosts({ currentPage });
 
