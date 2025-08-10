@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { drizzle } from "drizzle-orm/d1";
-import { getRequestContext } from "@cloudflare/next-on-pages";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { table as postsTable } from "@/server/posts";
 import { count, desc } from "drizzle-orm";
 import { type InferSelectModel } from "drizzle-orm";
@@ -10,7 +10,7 @@ const PAGE_SIZE = 10;
 type Post = InferSelectModel<typeof postsTable>;
 
 const getPosts = async ({ currentPage }: { currentPage: number }): Promise<Array<Post & { total: number }>> => {
-  const context = getRequestContext();
+  const context = getCloudflareContext();
   const db = drizzle(context.env.D1DATA);
 
   const [total] = await db.select({ count: count() }).from(postsTable);
@@ -54,4 +54,3 @@ const Page = async ({ searchParams }: { searchParams?: Promise<{ page?: string }
 };
 
 export default Page;
-export const runtime = "edge";

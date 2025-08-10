@@ -1,13 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:next-on-pages/recommended", "plugin:prettier/recommended"],
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
   "plugins": [
     "react-compiler",
-    "unused-imports",
-    "next-on-pages"
+    "unused-imports"
   ],
   "rules": {
     "react-compiler/react-compiler": "error",
-    "unused-imports/no-unused-imports-ts": "warn",
-    "next-on-pages/no-unsupported-configs": "warn"
+    "unused-imports/no-unused-imports-ts": "warn"
   }
 }
