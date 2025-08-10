@@ -34,6 +34,13 @@
       "dataset": "TESTING",
     },
   ],
+  "r2_buckets": [
+    // Create a R2 binding with the binding name "NEXT_INC_CACHE_R2_BUCKET"
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "tombaker-blog-cache",
+    },
+  ],
   "env": {
     "production": {
       // The following properties were commented out in the original wrangler.toml
