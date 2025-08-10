@@ -14,10 +14,11 @@
     "build-cf-types": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
-    "@types/node": "^20.14.13",
+    "@opennextjs/cloudflare": "^1.6.5",
+    "@types/node": "^22",
     "@types/react": "19.1.9",
     "@types/react-dom": "19.1.7",
-    "babel-plugin-react-compiler": "0.0.0-experimental-696af53-20240625",
+    "babel-plugin-react-compiler": "^19.1.0-rc.2",
     "drizzle-orm": "^0.32.1",
     "eslint": "~8.57.0",
     "next": "15.4.6",
@@ -26,16 +27,15 @@
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.12.1",
     "@cloudflare/workers-types": "^4.20240725.0",
-    "@typescript-eslint/typescript-estree": "^7.17.0",
+    "@typescript-eslint/typescript-estree": "^7.18.0",
     "autoprefixer": "^10.4.19",
     "drizzle-kit": "^0.23.0",
     "eslint-config-next": "15.4.6",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-next-on-pages": "^1.12.1",
     "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react-compiler": "0.0.0-experimental-9ed098e-20240725",
+    "eslint-plugin-react-compiler": "^19.1.0-rc.2",
     "eslint-plugin-unused-imports": "~3.2.0",
     "postcss": "^8.4.40",
     "prettier": "^3.3.3",
