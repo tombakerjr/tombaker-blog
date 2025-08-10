@@ -10,8 +10,8 @@ const getPost = async (slug: string): Promise<Post | null> => {
   return post;
 };
 
-const Page = async ({ params }: { params: { slug: string } }) => {
-  const post = await getPost(params.slug);
+const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const post = await getPost((await params).slug);
 
   if (!post) {
     return (

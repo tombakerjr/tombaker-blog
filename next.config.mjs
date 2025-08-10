@@ -2,11 +2,7 @@
 
 import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
 
-const nextConfig = {
-  experimental: {
-    reactCompiler: true,
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;
 
