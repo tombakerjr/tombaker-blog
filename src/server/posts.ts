@@ -28,9 +28,7 @@ export const table = sqliteTable(
     ...auditSchema,
   },
   (table) => {
-    return {
-      userIdIndex: index("postUserIdIndex").on(table.userId),
-    };
+    return [index("postUserIdIndex").on(table.userId)];
   },
 );
 
