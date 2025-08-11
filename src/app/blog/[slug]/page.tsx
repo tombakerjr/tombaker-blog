@@ -1,17 +1,22 @@
+import { drizzle } from "drizzle-orm/d1";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { table as postsTable } from "@/server/posts";
+import { type InferSelectModel } from "drizzle-orm";
 import Link from "next/link";
 
-// TODO: Switch to pulling data directly from D1
-const getPost = async (slug: string): Promise<Post | null> => {
-  const postRequest = await fetch(`https://api.tombaker.me/v1/posts/${slug}`);
-  if (!postRequest.ok) return null;
+type Post = InferSelectModel<typeof postsTable>;
 
-  const { data: post }: SonicResponse<Post> = await postRequest.json();
+const getPost = async (id: string): Promise<Post | null> => {
+  const context = getCloudflareContext();
+  const db = drizzle(context.env.D1DATA);
 
-  return post;
+  const post = await db.select().from(postsTable).get({ id });
+
+  return post ?? null;
 };
 
-const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
-  const post = await getPost((await params).slug);
+const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const post = await getPost((await params).id);
 
   if (!post) {
     return (
