@@ -5,7 +5,7 @@ export default function Home() {
       <h2>Work In Progress!</h2>
 
       <p>
-        <a href="https://github.com/tombakerjr" target="_blank">
+        <a href="https://github.com/tombakerjr" target="_blank" rel="noopener">
           Github Profile
         </a>
       </p>

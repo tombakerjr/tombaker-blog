@@ -1,7 +1,7 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "../components/navbar";
 import Footer from "../components/footer";
+import { Navbar } from "../components/navbar";
 
 export const metadata: Metadata = {
   title: "Tom Baker",
