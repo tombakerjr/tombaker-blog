@@ -1,8 +1,8 @@
-import { drizzle } from "drizzle-orm/d1";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { table as postsTable } from "@/server/posts";
-import { type InferSelectModel } from "drizzle-orm";
+import type { InferSelectModel } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/d1";
 import Link from "next/link";
+import { table as postsTable } from "@/server/posts";
 
 type Post = InferSelectModel<typeof postsTable>;
 
